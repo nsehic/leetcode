@@ -10,18 +10,17 @@ func uniquePaths(m int, n int) int {
 
 	for row := range dp {
 		for col := range dp[row] {
-			fromTop := 0
-			fromLeft := 0
+			paths := 0
 
 			if row > 0 {
-				fromTop = dp[row-1][col]
+				paths += dp[row-1][col]
 			}
 
 			if col > 0 {
-				fromLeft = dp[row][col-1]
+				paths += dp[row][col-1]
 			}
 
-			dp[row][col] = dp[row][col] + (fromTop + fromLeft)
+			dp[row][col] = dp[row][col] + paths
 		}
 	}
 
